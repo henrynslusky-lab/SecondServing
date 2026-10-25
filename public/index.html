@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#173e35"><meta name="description" content="Practice rescuing restaurant surplus with Second Serving. Explore donation matching, recipient offers, and handoffs in a fictional Miami food rescue workspace.">
+  <title>Second Serving · Local workspace</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand supplied-brand" href="#overview" aria-label="Second Serving overview"><span class="brand-image-window"><img src="./assets/second-serving-logo.png" alt="Second Serving" width="2172" height="724"></span><small>GOOD FOOD, CONNECTED.</small></a>
+    <div class="workspace-label">YOUR WORKSPACE <span>DEMO</span></div>
+    <nav id="navigation">
+      <a href="#overview" data-view="overview"><span data-icon="grid"></span>Overview</a>
+      <a href="#donations" data-view="donations"><span data-icon="box"></span>Donations<span class="nav-count" id="nav-count">2</span></a>
+      <a href="#recipients" data-view="recipients"><span data-icon="people"></span>Recipients</a>
+      <a href="#activity" data-view="activity"><span data-icon="activity"></span>Activity</a>
+      <a href="#agent" data-view="agent"><span data-icon="spark"></span>AI coordinator</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#practice" data-view="practice" class="practice-link"><span data-icon="spark"></span>Practice lab<span class="tiny-tag">TRY IT</span></a>
+      <div class="sidebar-note"><span class="small-spark">✳</span><h3>Small actions.<br>Fuller tables.</h3><p>Practice one rescue.<br>Learn the whole journey.</p><button class="sidebar-cta" data-action="guided">Start a guided rescue <span>↗</span></button></div>
+      <div class="profile"><span class="avatar">YC</span><span>Your hackathon team<small>Miami practice workspace</small></span><span class="profile-dot"></span></div>
+    </div>
+  </aside>
+  <div class="main-shell">
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Overview</strong></div><div class="topbar-right"><label class="search"><span data-icon="search"></span><input id="search" placeholder="Search donations…" aria-label="Search donations"></label><button class="practice-pill" id="mode-indicator" aria-label="View coordinator connection"><i></i><span>Practice mode</span></button><button class="icon-button" id="help" aria-label="Open practice lab"><span data-icon="help"></span></button></div></header>
+    <main id="content" tabindex="-1"></main>
+    <footer class="page-footer"><span>Made for a little less waste & a little more community.</span><span><i></i> Fictional data · Saved in this browser</span></footer>
+  </div>
+</div>
+<dialog id="donation-dialog" aria-labelledby="donation-title">
+  <div class="dialog-heading"><div><p class="eyebrow">LET'S PUT GOOD FOOD TO USE</p><h2 id="donation-title">Offer a little surplus.</h2></div><button class="icon-button" data-action="close-dialog" aria-label="Close donation form">×</button></div>
+  <p class="dialog-intro" id="donation-intro">Add a fictional donation. The selected coordinator will check recipients and create a pickup offer.</p>
+  <button type="button" class="sample-button" id="fill-sample"><span data-icon="spark"></span>Fill with the 30-meal example <span>↗</span></button>
+  <form id="donation-form">
+    <div class="form-grid"><label>Restaurant name<input name="restaurant" placeholder="e.g. Café Mar y Sol" required maxlength="80"></label><label>Pickup neighborhood<input name="location" placeholder="e.g. Little River, Miami" required maxlength="100"></label></div>
+    <label>What food is available?<input name="food" placeholder="e.g. Boxed vegetarian meals" required maxlength="120"></label>
+    <div class="form-grid"><label>Number of portions<input name="quantity" type="number" min="1" max="1000" step="1" placeholder="30" required></label><label>Food category<select name="category" required><option value="">Choose a category</option><option value="prepared">Prepared food</option><option value="pantry">Pantry / shelf-stable food</option></select></label></div>
+    <div class="form-grid"><label>Storage required<select name="storage" required><option value="">Choose storage</option><option value="refrigerated">Refrigerated</option><option value="ambient">Ambient / shelf stable</option></select></label><label>Ready for pickup<select name="readyIn"><option value="0">Now, in practice time</option><option value="15" selected>In 15 minutes</option><option value="30">In 30 minutes</option></select></label></div>
+    <div class="form-grid"><label>Pickup deadline<select name="window"><option value="30">30 minutes from now</option><option value="60">60 minutes from now</option><option value="90" selected>90 minutes from now</option><option value="120">120 minutes from now</option></select></label><label>Allergen information<input name="allergens" placeholder="Write unknown if not known" required maxlength="200"></label></div>
+    <label class="checkbox-label"><input name="confirmed" type="checkbox" required><span>I reviewed these details. Handling and food suitability still require human verification.</span></label>
+    <p id="form-error" class="form-error" role="alert"></p>
+    <div class="dialog-footer"><button type="button" class="button secondary" data-action="close-dialog">Cancel</button><button type="submit" class="button primary">Confirm & find a recipient <span>→</span></button></div>
+  </form>
+</dialog>
+<dialog id="detail-dialog" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><div class="dialog-heading"><h2 id="confirm-title">Start a fresh practice?</h2><button class="icon-button" data-action="close-confirm" aria-label="Close confirmation">×</button></div><p id="confirm-message" class="dialog-intro"></p><div class="dialog-footer"><button class="button secondary" data-action="close-confirm">Keep current practice</button><button class="button primary" id="confirm-yes">Start fresh</button></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+</body></html>
