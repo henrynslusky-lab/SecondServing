@@ -1,0 +1,12 @@
+{
+  "name": "second-serving",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local food rescue coordination prototype with a Kimi tool-using agent.",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "start": "node local-server.mjs",
+    "test": "node --test engine.test.mjs agent.test.mjs"
+  }
+}
