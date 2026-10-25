@@ -1,6 +1,14 @@
-# Second Serving — local website
+# Second Serving — food rescue website
 
 Second Serving is a food rescue coordination prototype: a live Kimi agent drafts restaurant donations, checks recipient eligibility, creates pickup offers, and finds another recipient when an offer is declined. People review details and confirm acceptance, collection, and receipt.
+
+## Vercel hosting
+
+The same project supports Vercel hosting. `vercel.json` serves `public/` and routes `/api/agent/*` to the serverless handler in `api/agent.js`. Deployment runs all 23 checks. The local start command remains available.
+
+For live AI on Vercel, configure `AI_PROVIDER=moonshot`, `KIMI_MODEL=kimi-k2.6`, and your own `MOONSHOT_API_KEY` as a sensitive server-side production environment variable. Never add a public/browser prefix to the key. Redeploy after changing environment variables. Without a key, practice mode still works and live AI is shown as disconnected.
+
+Each visitor's fictional workspace stays in their own browser storage. This demo does not provide shared restaurant accounts, real messages, or a production delivery service. Vercel serves the website and AI API; Moonshot processes live AI requests.
 
 The complete website is hosted on your own computer at **http://localhost:4173**.
 

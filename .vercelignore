@@ -1,0 +1,7 @@
+.git
+.env*
+!.env.example
+.agent-status.json
+node_modules
+*.log
+coverage

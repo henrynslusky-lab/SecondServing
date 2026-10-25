@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "description": "A local food rescue coordination prototype with a Kimi tool-using agent.",
-  "engines": { "node": ">=22.13.0" },
+  "engines": { "node": "22.x" },
   "scripts": {
     "start": "node local-server.mjs",
-    "test": "node --test engine.test.mjs agent.test.mjs"
+    "test": "node --test engine.test.mjs agent.test.mjs hosting.test.mjs"
   }
 }

@@ -3,6 +3,7 @@
 !.env.example
 .dev.vars*
 node_modules/
+.vercel/
 *.log
 .agent-status.json
 coverage/
